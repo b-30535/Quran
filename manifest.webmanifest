@@ -1,0 +1,13 @@
+{
+  "id": "/",
+  "name": "Noor Al-Quran Ultimate",
+  "short_name": "Noor Quran",
+  "description": "Quran journey, prayer tracker, Qibla and daily Islamic tools.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#061b17",
+  "theme_color": "#082c25",
+  "icons": []
+}
