@@ -46,6 +46,11 @@ Open http://127.0.0.1:8000/docs for interactive API docs during development.
 - `GET /api/v1/auth/me` — get the current profile using `Authorization: Bearer <token>`
 - `PUT /api/v1/prayers/logs` — create/update one of the five daily prayer statuses (requires bearer token)
 - `GET /api/v1/prayers/logs?start_date=2026-10-01&end_date=2026-10-31` — list your own prayer records for an inclusive date range (requires bearer token)
+- `GET /api/v1/quran/surahs` — read the Surah index from AlQuran.cloud
+- `GET /api/v1/quran/surah/1` — read Arabic plus Urdu translation
+- `GET /api/v1/quran/surah/1?translation=en.sahih` — read Arabic plus English translation
+
+Quran text and translations are served from AlQuran.cloud. The API allow-lists supported translations and checks Ayah alignment; it does not generate scripture.
 
 Registration JSON example:
 
