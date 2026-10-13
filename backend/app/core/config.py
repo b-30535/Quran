@@ -13,6 +13,9 @@ class Settings(BaseSettings):
     mongodb_uri: str = ""
     mongodb_database: str = "noor_al_quran"
     cors_origins: str = "http://localhost:3000,http://localhost:5173"
+    jwt_secret_key: str = ""
+    jwt_issuer: str = "noor-al-quran-api"
+    access_token_minutes: int = 30
 
     model_config = SettingsConfigDict(
         env_file=".env",
