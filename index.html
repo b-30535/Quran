@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#082c25">
+  <meta name="description" content="Noor Al-Quran — Quran reading, prayer tracking, Qibla and daily Islamic tools.">
+  <link rel="manifest" href="/manifest.webmanifest">
+  <title>Noor Al-Quran — Your Daily Companion</title>
+  <style>
+    :root{color-scheme:dark;--bg:#061b17;--panel:#0c2922;--panel2:#10372d;--gold:#e8c982;--mint:#a8d8c2;--text:#f4f6ef;--muted:#a4bdb2;--line:#285044;--green:#42c995;--red:#f2a69b}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at 80% -10%,#1a4b3b 0,transparent 42%),var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif;min-height:100vh}
+    button,input,select{font:inherit}button{cursor:pointer} .app{max-width:1100px;margin:auto;padding:20px 16px 100px}
+    header{display:flex;align-items:center;justify-content:space-between;gap:12px;margin:4px 0 24px}.brand{display:flex;gap:12px;align-items:center}.logo{display:grid;place-items:center;width:48px;height:48px;border:1px solid #9a7e3f;border-radius:16px;color:var(--gold);font-size:26px;background:linear-gradient(145deg,#173e31,#09231d)}h1,h2,h3,p{margin-top:0}h1{font-size:20px;margin-bottom:3px;letter-spacing:.2px}.sub{font-size:12px;color:var(--muted)}.pill{border:1px solid var(--line);border-radius:999px;padding:9px 12px;color:var(--mint);background:#0a241e;font-size:12px}
+    .hero{border:1px solid #38634f;border-radius:24px;padding:24px;background:linear-gradient(125deg,#123b30,#0a241e 65%,#173a2d);position:relative;overflow:hidden}.hero:after{content:"۞";position:absolute;right:18px;top:5px;font-size:100px;color:#e8c98212}.eyebrow{color:var(--gold);font-size:11px;letter-spacing:2px;text-transform:uppercase}.hero h2{font-size:clamp(26px,5vw,40px);line-height:1.12;max-width:570px;margin:12px 0}.hero p{color:#c3d8ce;max-width:510px;font-size:14px;line-height:1.65}.actions{display:flex;gap:10px;flex-wrap:wrap}.btn{border:1px solid var(--line);border-radius:12px;padding:11px 14px;color:var(--text);background:#12352b}.btn.primary{background:var(--gold);border-color:var(--gold);color:#13251d;font-weight:750}.grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:14px;margin-top:16px}.card{grid-column:span 6;background:linear-gradient(145deg,#0d2a23,#0a211c);border:1px solid var(--line);border-radius:20px;padding:18px;min-width:0}.card.wide{grid-column:span 12}.card.third{grid-column:span 4}.cardhead{display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:14px}.card h3{font-size:16px;margin:0}.icon{font-size:21px;color:var(--gold)}.muted{color:var(--muted);font-size:12px;line-height:1.55}.prayer-list{display:grid;gap:8px}.prayer{display:grid;grid-template-columns:1fr minmax(130px,160px);align-items:center;gap:8px;padding:10px;border-radius:12px;background:#102f27}.prayer strong{font-size:14px}.prayer small{display:block;color:var(--muted);font-size:11px;margin-top:3px}.prayer select{width:100%;min-width:0;background:#09221c;border:1px solid #315b4b;border-radius:9px;padding:9px;color:var(--text);font-size:12px}.progress{height:7px;background:#214338;border-radius:20px;overflow:hidden;margin:13px 0 7px}.progress span{display:block;height:100%;background:linear-gradient(90deg,#50c99a,var(--gold));width:0;transition:width .2s}.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}.stat{padding:12px;background:#102f27;border-radius:12px}.stat b{font-size:21px;display:block;color:var(--gold)}.stat span{font-size:10px;color:var(--muted)}.tabs{display:flex;gap:5px;background:#071f19;padding:4px;border-radius:12px}.tabs button{flex:1;border:0;background:transparent;color:var(--muted);padding:8px 5px;border-radius:9px;font-size:12px}.tabs button.active{background:#214638;color:#fff}.reportline{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid #204438;font-size:13px}.reportline:last-child{border-bottom:0}.qibla-wrap{display:flex;align-items:center;gap:20px}.compass{width:125px;height:125px;flex-shrink:0;border:1px solid #567a65;border-radius:50%;display:grid;place-items:center;position:relative;background:radial-gradient(circle,#164333,#09221b);box-shadow:inset 0 0 0 8px #0b2c23}.needle{font-size:43px;color:var(--gold);transform:rotate(0deg);transition:transform .3s}.north{position:absolute;top:7px;color:var(--muted);font-size:10px}.qibla-degree{font-size:26px;color:var(--gold);font-weight:750}.feature{display:flex;gap:12px;padding:12px 0;border-bottom:1px solid #204438}.feature:last-child{border-bottom:0}.feature .ico{width:38px;height:38px;flex-shrink:0;display:grid;place-items:center;background:#14392d;border-radius:12px;font-size:18px}.feature b{display:block;font-size:13px;margin-bottom:4px}.feature span{font-size:11px;color:var(--muted);line-height:1.5}.notice{background:#2b2818;border:1px solid #66572a;border-radius:12px;padding:11px;font-size:11px;color:#e6d7a7;line-height:1.55}.bottomnav{position:fixed;z-index:4;bottom:0;left:0;right:0;display:flex;justify-content:center;background:#071c17eF;backdrop-filter:blur(16px);border-top:1px solid var(--line);padding:9px 6px calc(9px + env(safe-area-inset-bottom))}.bottomnav button{flex:1;max-width:160px;border:0;background:transparent;color:var(--muted);font-size:10px;padding:6px 3px}.bottomnav button span{display:block;font-size:19px;margin-bottom:3px}.bottomnav button.active{color:var(--gold)}footer{text-align:center;margin-top:24px;color:#739387;font-size:10px}
+    @media(max-width:650px){.app{padding:14px 12px 95px}header{margin-bottom:16px}.card,.card.third{grid-column:span 12}.hero{padding:20px}.hero h2{font-size:29px}.qibla-wrap{gap:14px}.compass{width:104px;height:104px}.needle{font-size:36px}.prayer{grid-template-columns:1fr 142px}.stats{gap:6px}.stat{padding:10px}.stat b{font-size:18px}}
+  </style>
+</head>
+<body>
+<div class="app">
+  <header>
+    <div class="brand"><div class="logo">۞</div><div><h1>Noor Al-Quran</h1><div class="sub">YOUR DAILY ISLAMIC COMPANION</div></div></div>
+    <button class="pill" id="installBtn" hidden>＋ Install app</button>
+  </header>
+  <section class="hero">
+    <div class="eyebrow">A mindful daily journey</div>
+    <h2>Read with heart.<br><span style="color:var(--gold)">Live with purpose.</span></h2>
+    <p>Your Quran journey, prayer habits, Qibla direction, and daily remembrance — brought together in one calm space.</p>
+    <div class="actions"><button class="btn primary" onclick="document.querySelector('#tracker').scrollIntoView({behavior:'smooth'})">Track my prayers →</button><button class="btn" onclick="document.querySelector('#qibla').scrollIntoView({behavior:'smooth'})">Find Qibla</button></div>
+  </section>
+  <div class="grid">
+    <section class="card wide" id="tracker">
+      <div class="cardhead"><h3>☪ Namaz Tracker</h3><span class="pill" id="dateLabel"></span></div>
+      <p class="muted">Record each obligatory prayer. Your entries are saved on this device.</p>
+      <div class="prayer-list" id="prayerList"></div>
+      <div class="progress"><span id="todayProgress"></span></div>
+      <div class="muted" id="progressText">0 of 5 prayers marked as prayed</div>
+    </section>
+    <section class="card" id="reports">
+      <div class="cardhead"><h3>📊 Prayer reports</h3></div>
+      <div class="tabs" role="tablist"><button class="active" data-period="day">Day</button><button data-period="week">Week</button><button data-period="month">Month</button><button data-period="year">Year</button></div>
+      <div class="stats" style="margin-top:12px"><div class="stat"><b id="doneCount">0</b><span>Prayed</span></div><div class="stat"><b id="missedCount">0</b><span>Missed</span></div><div class="stat"><b id="rateCount">0%</b><span>Completion</span></div></div>
+      <div id="reportDetails" style="margin-top:8px"></div>
+      <p class="muted" style="margin:12px 0 0">Reports are calculated from entries you record, not automatic detection of worship.</p>
+    </section>
+    <section class="card" id="qibla">
+      <div class="cardhead"><h3>🧭 Qibla direction</h3><span class="pill">Compass</span></div>
+      <div class="qibla-wrap"><div class="compass"><span class="north">N</span><span class="needle" id="needle">➤</span></div><div><div class="qibla-degree" id="qiblaDegrees">--°</div><div class="muted" id="qiblaText">Use your location to calculate direction to the Kaaba.</div><button class="btn" style="margin-top:10px" id="locateBtn">Find my Qibla</button></div></div>
+      <p class="muted" style="margin:14px 0 0">For a live compass heading, your device must support orientation sensors and grant permission. Keep away from magnetic objects and calibrate if needed.</p>
+    </section>
+    <section class="card" id="tools">
+      <div class="cardhead"><h3>🌙 Daily tools</h3></div>
+      <div class="feature"><div class="ico">📿</div><div><b>Azkar & Tasbeeh</b><span>Keep daily remembrance goals and count your Zikr. Detailed saved history is planned for the next build.</span></div></div>
+      <div class="feature"><div class="ico">📖</div><div><b>Quran reader</b><span>Verified Arabic Quran text, translations, bookmarks, and recitation will be added as the next content module.</span></div></div>
+      <div class="feature"><div class="ico">🧠</div><div><b>Hifz & AI study assistant</b><span>Memorization plans and reference-backed study help are planned. AI will not generate or replace Quran text.</span></div></div>
+    </section>
+    <section class="card" id="backup">
+      <div class="cardhead"><h3>🔐 Your data</h3></div>
+      <div class="feature"><div class="ico">📱</div><div><b>Saved on this device</b><span id="storageState">Prayer entries are stored locally in this browser.</span></div></div>
+      <div class="feature"><div class="ico">☁️</div><div><b>Cloud backup</b><span>Account login and secure cloud sync will be connected after the backend is set up.</span></div></div>
+      <button class="btn" id="exportBtn" style="width:100%;margin-top:12px">Export my prayer records (JSON)</button>
+      <div class="notice" style="margin-top:12px">Keep a backup if you clear browser data or change phones. Cloud backup is not active in this first version.</div>
+    </section>
+  </div>
+  <footer>NOOR AL-QURAN · BUILT WITH CARE · Verify prayer times and Qibla readings locally before relying on them.</footer>
+</div>
+<nav class="bottomnav" aria-label="Main navigation"><button class="active" onclick="window.scrollTo({top:0,behavior:'smooth'})"><span>⌂</span>Home</button><button onclick="document.querySelector('#tracker').scrollIntoView({behavior:'smooth'})"><span>☪</span>Namaz</button><button onclick="document.querySelector('#qibla').scrollIntoView({behavior:'smooth'})"><span>🧭</span>Qibla</button><button onclick="document.querySelector('#tools').scrollIntoView({behavior:'smooth'})"><span>☾</span>Tools</button><button onclick="document.querySelector('#reports').scrollIntoView({behavior:'smooth'})"><span>▥</span>Reports</button></nav>
+<script>
+const PRAYERS=['Fajr','Dhuhr','Asr','Maghrib','Isha'];
+const STATUSES=[['','Not marked'],['on-time','Prayed on time'],['late','Prayed late'],['missed','Missed'],['qaza','Qaza'],['excused','Excused']];
+const OPTIONAL=['Sunnah','Nafl','Witr','Tahajjud'];
+const KEY='noor-prayer-records-v1';
+let records=readRecords(), period='day', deferredInstall=null, qiblaBearing=null, deviceHeading=0;
+function readRecords(){try{return JSON.parse(localStorage.getItem(KEY)||'{}')}catch{return {}}}
+function saveRecords(){localStorage.setItem(KEY,JSON.stringify(records))}
+function dateKey(d=new Date()){return d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0')}
+function recordFor(key){if(!records[key])records[key]={};return records[key]}
+function statusLabel(s){return (STATUSES.find(x=>x[0]===s)||['','Not marked'])[1]}
+function renderTracker(){
+ const key=dateKey(), data=recordFor(key);document.getElementById('dateLabel').textContent=new Date().toLocaleDateString(undefined,{weekday:'short',day:'numeric',month:'short'});
+ const root=document.getElementById('prayerList');root.innerHTML='';
+ PRAYERS.forEach(name=>{const row=document.createElement('div');row.className='prayer';const label=document.createElement('div');label.innerHTML='<strong>'+name+'</strong><small>Obligatory prayer</small>';const select=document.createElement('select');select.setAttribute('aria-label',name+' prayer status');STATUSES.forEach(([value,text])=>{const opt=document.createElement('option');opt.value=value;opt.textContent=text;select.appendChild(opt)});select.value=data[name]||'';select.addEventListener('change',()=>{recordFor(key)[name]=select.value;saveRecords();renderTracker();renderReport()});row.append(label,select);root.appendChild(row)});
+ OPTIONAL.forEach(name=>{const row=document.createElement('div');row.className='prayer';const label=document.createElement('div');label.innerHTML='<strong>'+name+'</strong><small>Optional prayer</small>';const select=document.createElement('select');select.setAttribute('aria-label',name+' prayer status');[['','Not marked'],['done','Completed'],['skip','Not completed']].forEach(([v,t])=>{let o=document.createElement('option');o.value=v;o.textContent=t;select.appendChild(o)});select.value=data[name]||'';select.addEventListener('change',()=>{recordFor(key)[name]=select.value;saveRecords();renderReport()});row.append(label,select);root.appendChild(row)});
+ const count=PRAYERS.filter(n=>['on-time','late'].includes(data[n])).length;document.getElementById('todayProgress').style.width=(count/5*100)+'%';document.getElementById('progressText').textContent=count+' of 5 prayers marked as prayed';
+}
+function periodKeys(){
+ const now=new Date(), keys=[];
+ if(period==='day')return [dateKey(now)];
+ if(period==='week'){const start=new Date(now);start.setHours(0,0,0,0);const dow=(start.getDay()+6)%7;start.setDate(start.getDate()-dow);for(let i=0;i<7;i++){let d=new Date(start);d.setDate(start.getDate()+i);keys.push(dateKey(d))}}
+ if(period==='month'){const d=new Date(now.getFullYear(),now.getMonth(),1);while(d.getMonth()===now.getMonth()){keys.push(dateKey(d));d.setDate(d.getDate()+1)}}
+ if(period==='year'){for(let m=0;m<12;m++){const d=new Date(now.getFullYear(),m,1);while(d.getMonth()===m){keys.push(dateKey(d));d.setDate(d.getDate()+1)}}}
+ return keys;
+}
+function renderReport(){
+ const keys=periodKeys();let done=0,missed=0,late=0,qaza=0,excused=0,marked=0,possible=keys.length*5;
+ keys.forEach(k=>{const d=records[k]||{};PRAYERS.forEach(n=>{const s=d[n]||'';if(s){marked++;if(s==='on-time'||s==='late')done++;if(s==='missed')missed++;if(s==='late')late++;if(s==='qaza')qaza++;if(s==='excused')excused++}})});
+ document.getElementById('doneCount').textContent=done;document.getElementById('missedCount').textContent=missed;document.getElementById('rateCount').textContent=(possible?Math.round(done/possible*100):0)+'%';
+ document.getElementById('reportDetails').innerHTML='<div class="reportline"><span>Period</span><b>'+({day:'Today',week:'This week',month:'This month',year:'This year'}[period])+'</b></div><div class="reportline"><span>Prayed late</span><b>'+late+'</b></div><div class="reportline"><span>Marked Qaza</span><b>'+qaza+'</b></div><div class="reportline"><span>Excused</span><b>'+excused+'</b></div><div class="reportline"><span>Entries recorded</span><b>'+marked+' / '+possible+'</b></div>';
+}
+document.querySelectorAll('[data-period]').forEach(btn=>btn.addEventListener('click',()=>{period=btn.dataset.period;document.querySelectorAll('[data-period]').forEach(b=>b.classList.toggle('active',b===btn));renderReport()}));
+document.getElementById('exportBtn').addEventListener('click',()=>{const blob=new Blob([JSON.stringify({exportedAt:new Date().toISOString(),records},null,2)],{type:'application/json'});const url=URL.createObjectURL(blob);const a=document.createElement('a');a.href=url;a.download='noor-al-quran-prayer-records.json';a.click();URL.revokeObjectURL(url)});
+function calculateQibla(lat,lon){const kaabaLat=21.4225*Math.PI/180, kaabaLon=39.8262*Math.PI/180, p=lat*Math.PI/180, dl=kaabaLon-lon*Math.PI/180;return (Math.atan2(Math.sin(dl),Math.cos(p)*Math.tan(kaabaLat)-Math.sin(p)*Math.cos(dl)*0+Math.sin(p)*0) *180/Math.PI+360)%360}
+function bearingToKaaba(lat,lon){const phi1=lat*Math.PI/180, phi2=21.4225*Math.PI/180, dl=(39.8262-lon)*Math.PI/180;return (Math.atan2(Math.sin(dl),Math.cos(phi1)*Math.tan(phi2)-Math.sin(phi1)*Math.cos(dl))*180/Math.PI+360)%360}
+function showBearing(b){qiblaBearing=b;document.getElementById('qiblaDegrees').textContent=Math.round(b)+'°';document.getElementById('qiblaText').textContent='Clockwise from true north · direction to the Kaaba';updateNeedle()}
+function updateNeedle(){if(qiblaBearing!==null)document.getElementById('needle').style.transform='rotate('+(qiblaBearing-deviceHeading)+'deg)'}
+document.getElementById('locateBtn').addEventListener('click',()=>{const text=document.getElementById('qiblaText');if(!navigator.geolocation){text.textContent='Location is not supported by this browser. Select a location in a future update.';return}text.textContent='Requesting location permission…';navigator.geolocation.getCurrentPosition(pos=>{showBearing(bearingToKaaba(pos.coords.latitude,pos.coords.longitude));text.textContent='Calculated from your current location. Compass rotation depends on sensor support.';try{localStorage.setItem('noor-qibla-location',JSON.stringify({lat:pos.coords.latitude,lon:pos.coords.longitude}))}catch{}},err=>{text.textContent=err.code===1?'Location permission denied. Allow location in browser settings to calculate Qibla.':'Could not get location. Try again outdoors or enter a location in a future update.'},{enableHighAccuracy:true,timeout:12000,maximumAge:60000})});
+window.addEventListener('deviceorientationabsolute',e=>{if(typeof e.alpha==='number'){deviceHeading=(360-e.alpha)%360;updateNeedle()}});
+window.addEventListener('deviceorientation',e=>{if(typeof e.webkitCompassHeading==='number'){deviceHeading=e.webkitCompassHeading;updateNeedle()}});
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredInstall=e;const b=document.getElementById('installBtn');b.hidden=false;b.onclick=async()=>{deferredInstall.prompt();await deferredInstall.userChoice;deferredInstall=null;b.hidden=true}});
+if('serviceWorker' in navigator && location.protocol.startsWith('http'))window.addEventListener('load',()=>navigator.serviceWorker.register('/sw.js').catch(()=>{}));
+renderTracker();renderReport();
+</script>
+</body></html>
