@@ -44,6 +44,8 @@ Open http://127.0.0.1:8000/docs for interactive API docs during development.
 - `POST /api/v1/auth/register` — create an account
 - `POST /api/v1/auth/login` — authenticate and receive a short-lived access token
 - `GET /api/v1/auth/me` — get the current profile using `Authorization: Bearer <token>`
+- `PUT /api/v1/prayers/logs` — create/update one of the five daily prayer statuses (requires bearer token)
+- `GET /api/v1/prayers/logs?start_date=2026-10-01&end_date=2026-10-31` — list your own prayer records for an inclusive date range (requires bearer token)
 
 Registration JSON example:
 
