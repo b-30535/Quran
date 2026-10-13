@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Noor Al-Quran Ultimate — Development Demo</title>
+<style>
+:root{color-scheme:dark;--bg:#07110f;--panel:#0e1d19;--gold:#d9bd72;--muted:#9bb0a7;--line:#294139;--green:#173d30}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#15362a 0, var(--bg) 60%);font:16px system-ui,sans-serif;color:#f5f2e9;min-height:100vh;padding:24px 14px 48px}.wrap{max-width:760px;margin:auto}.brand{display:flex;align-items:center;gap:12px;margin:8px 0 24px}.mark{display:grid;place-items:center;width:48px;height:48px;border:1px solid var(--gold);border-radius:16px;color:var(--gold);font-size:25px}.eyebrow{color:var(--gold);font-size:12px;letter-spacing:2px;text-transform:uppercase}.muted{color:var(--muted)}h1{font-size:clamp(28px,6vw,42px);line-height:1.1;margin:10px 0}h2{font-size:18px;margin:0 0 12px}.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:12px;margin:20px 0}.card{background:linear-gradient(145deg,#132720,#0c1915);border:1px solid var(--line);border-radius:20px;padding:18px}.big{font-size:26px;color:var(--gold);font-weight:650}.pill{display:inline-block;border:1px solid #4d6b5d;border-radius:999px;padding:6px 10px;font-size:12px;color:#c4d8ce}.prayers{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}.prayer{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:12px;background:#0a1713;border:1px solid var(--line);border-radius:12px}.prayer button, .action{background:var(--green);border:1px solid #557c66;color:#fff;border-radius:10px;padding:9px 12px;cursor:pointer}.action{background:var(--gold);color:#142119;border:0;font-weight:700;margin-top:12px}.notice{border-left:3px solid var(--gold);padding:10px 12px;background:#18251d;color:#d9e4dc;border-radius:0 10px 10px 0;font-size:13px;margin-top:18px}footer{font-size:12px;color:var(--muted);margin-top:24px}@media(max-width:420px){.prayers{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="brand"><div class="mark">☾</div><div><div class="eyebrow">Your daily companion</div><strong>Noor Al-Quran Ultimate</strong></div></header>
+<div class="eyebrow">Interactive preview · Development only</div><h1>Bring your daily worship<br>into focus.</h1><p class="muted">A calm, futuristic Islamic app concept with deep emerald surfaces and subtle gold details.</p>
+<section class="grid">
+<div class="card"><div class="eyebrow">Daily prayer progress</div><div class="big" id="count">0 / 5</div><p class="muted">Tap a prayer below to preview your tracker.</p><div class="pill">Personal dashboard</div></div>
+<div class="card"><div class="eyebrow">Continue reading</div><h2>Al-Fatihah</h2><p lang="ar" dir="rtl" style="font-size:25px;line-height:1.9">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p><p class="muted">Sample display only. Verified Quran content will be connected from a trusted source.</p></div>
+</section>
+<section class="card"><h2>Prayer tracker preview</h2><p class="muted">This demo is not connected to an account or database.</p><div class="prayers" id="prayers"></div><button class="action" id="reset">Reset demo</button></section>
+<section class="grid">
+<div class="card"><h2>Quran & listening</h2><p class="muted">Surah index, translations, reciters, bookmarks and reading progress.</p></div>
+<div class="card"><h2>Azkar & Tasbeeh</h2><p class="muted">Daily remembrance, custom counters and progress summaries.</p></div>
+<div class="card"><h2>Reports & backup</h2><p class="muted">Daily to yearly prayer history, with secure account-based sync planned.</p></div>
+<div class="card"><h2>AI assistant</h2><p class="muted">Answers will be clearly labelled and grounded in trusted references.</p></div>
+</section>
+<div class="notice">DEVELOPMENT PREVIEW — Do not enter a real password or private information. This page stores no account credentials and does not call the live API.</div>
+<footer>Built for Noor Al-Quran Ultimate · Not a production release</footer>
+</main>
+<script>
+const names=['Fajr','Dhuhr','Asr','Maghrib','Isha'];const state={};const root=document.querySelector('#prayers');
+function render(){root.innerHTML='';names.forEach(n=>{const el=document.createElement('div');el.className='prayer';const label=document.createElement('span');label.textContent=n;const b=document.createElement('button');b.textContent=state[n]?'✓ Done':'Mark done';b.setAttribute('aria-pressed',String(!!state[n]));b.onclick=()=>{state[n]=!state[n];render()};el.append(label,b);root.append(el)});document.querySelector('#count').textContent=names.filter(n=>state[n]).length+' / 5'}
+document.querySelector('#reset').onclick=()=>{names.forEach(n=>delete state[n]);render()};render();
+</script></body></html>
