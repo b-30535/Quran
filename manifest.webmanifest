@@ -2,7 +2,7 @@
   "id": "/",
   "name": "Noor Al-Quran Ultimate",
   "short_name": "Noor Quran",
-  "description": "Quran journey, prayer tracker, Qibla and daily Islamic tools.",
+  "description": "Quran journey, prayer tracker, Adhan reminders and daily Islamic tools.",
   "start_url": "/",
   "scope": "/",
   "display": "standalone",
