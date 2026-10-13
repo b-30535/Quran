@@ -51,13 +51,18 @@ class AuthResponse(BaseModel):
     user: UserResponse
 
 
-def _create_access_token(user_id: str, email: str) -> str:
+def _require_auth_secret() -> str:
     secret = settings.jwt_secret_key.strip()
     if len(secret) < 32:
         raise HTTPException(
             status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
             detail="Authentication is not configured. Set a strong JWT_SECRET_KEY.",
         )
+    return secret
+
+
+def _create_access_token(user_id: str, email: str) -> str:
+    secret = _require_auth_secret()
     now = datetime.now(timezone.utc)
     payload = {
         "sub": user_id,
@@ -81,6 +86,7 @@ def _public_user(document: dict) -> UserResponse:
 @router.post("/register", response_model=AuthResponse, status_code=status.HTTP_201_CREATED)
 async def register(payload: RegisterRequest) -> AuthResponse:
     """Create an account. Passwords are hashed; plaintext passwords are never stored."""
+    _require_auth_secret()
     database = get_database()
     email = str(payload.email).lower().strip()
     existing = await database.users.find_one({"email": email}, {"_id": 1})
@@ -107,6 +113,7 @@ async def register(payload: RegisterRequest) -> AuthResponse:
 @router.post("/login", response_model=AuthResponse)
 async def login(payload: LoginRequest) -> AuthResponse:
     """Authenticate by email/password and return a short-lived bearer token."""
+    _require_auth_secret()
     database = get_database()
     email = str(payload.email).lower().strip()
     user = await database.users.find_one({"email": email})
