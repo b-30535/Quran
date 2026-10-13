@@ -30,6 +30,11 @@ async def connect_to_mongo() -> None:
         await _client.admin.command("ping")
         _database = _client[settings.mongodb_database]
         await _database.users.create_index("email", unique=True, name="users_email_unique")
+        await _database.prayer_logs.create_index(
+            [("user_id", 1), ("prayer_date", 1), ("prayer", 1)],
+            unique=True,
+            name="prayer_logs_user_date_prayer_unique",
+        )
         logger.info("Connected to MongoDB database '%s'.", settings.mongodb_database)
     except PyMongoError:
         await _client.close()
