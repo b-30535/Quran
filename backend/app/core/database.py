@@ -13,11 +13,7 @@ _database: Any = None
 
 
 async def connect_to_mongo() -> None:
-    """Connect to MongoDB if a URI is configured.
-
-    The API can start without MongoDB for local UI work, but database-backed
-    endpoints must not be considered ready until a connection is available.
-    """
+    """Connect to MongoDB and create indexes needed for account uniqueness."""
     global _client, _database
 
     if not settings.mongodb_uri.strip():
@@ -33,6 +29,7 @@ async def connect_to_mongo() -> None:
     try:
         await _client.admin.command("ping")
         _database = _client[settings.mongodb_database]
+        await _database.users.create_index("email", unique=True, name="users_email_unique")
         logger.info("Connected to MongoDB database '%s'.", settings.mongodb_database)
     except PyMongoError:
         await _client.close()
