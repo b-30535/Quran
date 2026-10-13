@@ -7,6 +7,7 @@ from fastapi.responses import JSONResponse
 
 from app.api.auth import router as auth_router
 from app.api.health import router as health_router
+from app.api.prayers import router as prayers_router
 from app.core.config import settings
 from app.core.database import close_mongo_connection, connect_to_mongo
 
@@ -44,6 +45,7 @@ app.add_middleware(
 
 app.include_router(health_router, prefix=settings.api_v1_prefix)
 app.include_router(auth_router, prefix=settings.api_v1_prefix)
+app.include_router(prayers_router, prefix=settings.api_v1_prefix)
 
 
 @app.exception_handler(RuntimeError)
