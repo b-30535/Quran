@@ -23,3 +23,18 @@ def test_readiness_does_not_expose_secrets():
     assert response.status_code == 200
     assert response.json()["status"] in {"ready", "degraded"}
     assert "mongodb_uri" not in response.text.lower()
+
+
+def test_register_rejects_short_password():
+    with TestClient(app) as client:
+        response = client.post(
+            "/api/v1/auth/register",
+            json={"display_name": "Demo User", "email": "demo@example.com", "password": "short"},
+        )
+    assert response.status_code == 422
+
+
+def test_profile_requires_bearer_token():
+    with TestClient(app) as client:
+        response = client.get("/api/v1/auth/me")
+    assert response.status_code == 401
