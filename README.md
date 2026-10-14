@@ -1,29 +1,34 @@
 # Noor Al-Quran Ultimate
 
-A mobile-first Progressive Web App foundation for Quran tools and prayer tracking.
+Development-only project. Do not deploy to production or change the live app until the owner explicitly approves the final release.
 
-## First version includes
-- Responsive emerald-and-gold dashboard
-- Five obligatory prayer status tracking: on-time, late, missed, Qaza, excused
-- Optional Sunnah, Nafl, Witr, and Tahajjud status tracking
-- Day, week, month, and year summaries
-- Local browser storage and JSON export
-- Qibla bearing calculation from device location
-- PWA manifest and service worker foundation
+## Current development milestone
 
-## Important limitations in this first version
-- Prayer records are local to the browser/device. Cloud backup is not connected yet.
-- Quran Arabic text, translations, recitation, prayer-time calculations, verified Tafsir, AI, login, and native APK are planned follow-up modules. This UI does not fabricate Quran text.
-- Qibla bearing is calculated from location; a live compass heading depends on browser and device sensor support.
-- The service worker caches the app shell, not Quran audio or a full offline Quran library.
+- `pwa/`: responsive installable web app shell with Surah reader, Para/Juz browsing, Arabic Uthmani text and Sahih International translation from AlQuran Cloud, audio playback entry point, local favorites/bookmarks/progress, dhikr counter and reminder preference UI.
+- `api/index.py`: FastAPI backend foundation for secure registration/login, hashed passwords (scrypt), signed expiring session tokens, user profile, synced favorites/bookmarks/progress, and reminder preferences.
+- `requirements.txt`: Python backend dependencies.
+- `vercel.json`: development routing configuration.
 
-## Deploy
-This is a static site and can be deployed on Vercel by importing this GitHub repository. HTTPS is required for geolocation and normal PWA installation features.
+## Configure development backend
 
-## Next milestones
-1. Test and improve PWA installation and offline shell.
-2. Add verified Quran content and prayer-time engine.
-3. Add backend API, authentication, and MongoDB cloud sync.
-4. Add Azkar and Hifz progress modules.
-5. Add reference-backed AI assistant.
-6. Package a native Android app and test notifications/background behavior.
+1. Create a PostgreSQL database (Neon is a suitable Vercel-compatible choice).
+2. Configure development-only environment variables in Vercel:
+   - `DATABASE_URL` — PostgreSQL connection string with TLS.
+   - `AUTH_SECRET` — long random secret (never commit this value).
+   - `ALLOWED_ORIGINS` — exact development preview origin(s).
+3. Install Python dependencies from `requirements.txt`.
+4. Deploy a **Preview** from the `development` branch only and test registration, login, session expiry, data sync, and error handling.
+5. Do not promote to Production until explicit approval.
+
+## Known gaps before release
+
+- Vercel project scope access must be restored before creating a preview deployment or configuring environment variables.
+- Quran data is fetched from AlQuran Cloud at runtime; confirm edition attribution, content accuracy, API availability and offline behavior before release.
+- Audio playback currently starts the first ayah as a proof of integration, not a complete playlist/player.
+- Browser reminder preferences and notification permission are present, but scheduled push delivery is **not implemented yet**. It requires push subscriptions, VAPID credentials, a scheduled job and end-to-end tests. Do not describe reminders as working push notifications until verified.
+- Android packaging remains a follow-up after the PWA is approved; use a Trusted Web Activity or Capacitor and test on real devices.
+- Add automated backend tests, rate limiting, account recovery, security review, privacy policy and accessibility checks before public launch.
+
+## Content and privacy
+
+Never store plaintext passwords. Never commit production secrets. Use only verified Quran editions and clearly label translations and reciters. Keep user data private and allow users to delete their account and saved data before public release.
